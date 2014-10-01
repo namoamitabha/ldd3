@@ -39,7 +39,7 @@ MODULE_DEVICE_TABLE(usb, skel_table);
 
 /* Structure to hold all of our device specific stuff */
 struct usb_skel {
-	struct usb_device *udev;	/* the usb device for this device */
+	struct usb_device *udev; /* the usb device for this device */
 	struct usb_interface *interface; /* the interface for this device */
 	unsigned char *bulk_in_buffer; /* the buffer to receive data */
 	size_t bulk_in_size;/* the size of the receive buffer */
@@ -72,7 +72,7 @@ static int skel_open(struct inode *inode, struct file *file)
 	interface = usb_find_interface(&skel_driver, subminor);
 	if (!interface) {
 		pr_err("%s - error, can't find device for minor %d",
-		__FUNCTION__, subminor);
+			__FUNCTION__, subminor);
 		retval = -ENODEV;
 		goto exit;
 	}
@@ -358,6 +358,6 @@ static void __exit usb_skel_exit(void)
 }
 
 module_init(usb_skel_init);
-module_exit(usbg_skel_exit);
+module_exit(usb_skel_exit);
 
 MODULE_LICENSE("GPL");
